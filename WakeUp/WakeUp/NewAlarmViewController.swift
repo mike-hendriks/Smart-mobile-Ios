@@ -9,22 +9,52 @@
 import UIKit
 
 class NewAlarmViewController: UIViewController {
-
+    
+    
+    
+    @IBOutlet weak var dpSelectedTime: UIDatePicker!
+    
+    @IBOutlet weak var lblSelectedTime: UILabel!
+    
+    
+    
+    public var strDate:String = "";
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
     }
     
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if (segue.identifier ==  "toAlarmViewController"){
+//            let alarmViewController = segue.destination as!
+//            AlarmsViewController;
+//
+//            alarmViewController.alarm = "sad";
+//
+//
+//
+//        }
+//    }
+    
 
-    /*
-    // MARK: - Navigation
+    @IBAction func btnAddAlarm(_ sender: Any) {
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+
+        lblSelectedTime.text = strDate;
+
+        //alarmsVC.alarm = strDate;
+
     }
-    */
-
+    
+    @IBAction func dpSelectTime(_ sender: Any) {
+        
+        let timeFormatter = DateFormatter()
+        timeFormatter.timeStyle = DateFormatter.Style.short
+        
+        strDate = timeFormatter.string(from: dpSelectedTime.date);
+        // do what you want to do with the string.
+    }
 }

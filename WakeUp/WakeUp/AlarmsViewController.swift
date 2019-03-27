@@ -8,23 +8,38 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
+class AlarmsViewController: UIViewController {
 
-    @IBOutlet weak var lblCurrentTime: UILabel!
+    
+    @IBOutlet weak var lblAlarm1: UILabel!
+    
+    @IBOutlet weak var lblCurrentDateTime: UILabel!
+    
+    var alarm: String = "";
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+     
         getCurrentDateTime();
+        
+//            lblAlarm1.text = alarm;
+        
     }
+    
     
     func getCurrentDateTime() {
         let formatter = DateFormatter()
-//        formatter.dateStyle = .long;
+        formatter.dateStyle = .long;
         formatter.timeStyle = .short;
-        let string = formatter.string(from: Date());
-        lblCurrentTime.text = string;
+        let dateTime: String = formatter.string(from: Date());
+        
+        lblCurrentDateTime.text = dateTime;
+        
+        
     }
 
+    
+    
 
 }
 

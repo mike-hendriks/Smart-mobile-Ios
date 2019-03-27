@@ -8,13 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		E060F4222243C170001FB9AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060F4212243C170001FB9AF /* AppDelegate.swift */; };
-		E060F4242243C170001FB9AF /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060F4232243C170001FB9AF /* FirstViewController.swift */; };
-		E060F4262243C170001FB9AF /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060F4252243C170001FB9AF /* SecondViewController.swift */; };
+		E060F4242243C170001FB9AF /* AlarmsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060F4232243C170001FB9AF /* AlarmsViewController.swift */; };
+		E060F4262243C170001FB9AF /* NSViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060F4252243C170001FB9AF /* NSViewController.swift */; };
 		E060F4292243C170001FB9AF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E060F4272243C170001FB9AF /* Main.storyboard */; };
 		E060F42B2243C172001FB9AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E060F42A2243C172001FB9AF /* Assets.xcassets */; };
 		E060F42E2243C172001FB9AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E060F42C2243C172001FB9AF /* LaunchScreen.storyboard */; };
 		E060F4392243C172001FB9AF /* WakeUpTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060F4382243C172001FB9AF /* WakeUpTests.swift */; };
 		E060F4442243C172001FB9AF /* WakeUpUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060F4432243C172001FB9AF /* WakeUpUITests.swift */; };
+		E060F4582244E616001FB9AF /* NewAlarmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E060F4572244E616001FB9AF /* NewAlarmViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,8 +38,8 @@
 /* Begin PBXFileReference section */
 		E060F41E2243C170001FB9AF /* WakeUp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WakeUp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E060F4212243C170001FB9AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E060F4232243C170001FB9AF /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		E060F4252243C170001FB9AF /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		E060F4232243C170001FB9AF /* AlarmsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmsViewController.swift; sourceTree = "<group>"; };
+		E060F4252243C170001FB9AF /* NSViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSViewController.swift; sourceTree = "<group>"; };
 		E060F4282243C170001FB9AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E060F42A2243C172001FB9AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E060F42D2243C172001FB9AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -49,6 +50,7 @@
 		E060F43F2243C172001FB9AF /* WakeUpUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WakeUpUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E060F4432243C172001FB9AF /* WakeUpUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WakeUpUITests.swift; sourceTree = "<group>"; };
 		E060F4452243C172001FB9AF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E060F4572244E616001FB9AF /* NewAlarmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAlarmViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,12 +102,13 @@
 			isa = PBXGroup;
 			children = (
 				E060F4212243C170001FB9AF /* AppDelegate.swift */,
-				E060F4232243C170001FB9AF /* FirstViewController.swift */,
-				E060F4252243C170001FB9AF /* SecondViewController.swift */,
+				E060F4232243C170001FB9AF /* AlarmsViewController.swift */,
+				E060F4252243C170001FB9AF /* NSViewController.swift */,
 				E060F4272243C170001FB9AF /* Main.storyboard */,
 				E060F42A2243C172001FB9AF /* Assets.xcassets */,
 				E060F42C2243C172001FB9AF /* LaunchScreen.storyboard */,
 				E060F42F2243C172001FB9AF /* Info.plist */,
+				E060F4572244E616001FB9AF /* NewAlarmViewController.swift */,
 			);
 			path = WakeUp;
 			sourceTree = "<group>";
@@ -259,9 +262,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E060F4262243C170001FB9AF /* SecondViewController.swift in Sources */,
+				E060F4262243C170001FB9AF /* NSViewController.swift in Sources */,
 				E060F4222243C170001FB9AF /* AppDelegate.swift in Sources */,
-				E060F4242243C170001FB9AF /* FirstViewController.swift in Sources */,
+				E060F4582244E616001FB9AF /* NewAlarmViewController.swift in Sources */,
+				E060F4242243C170001FB9AF /* AlarmsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
