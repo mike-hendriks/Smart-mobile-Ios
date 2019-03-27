@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseFirestore
+
 
 class NewAlarmViewController: UIViewController {
     
@@ -18,11 +20,14 @@ class NewAlarmViewController: UIViewController {
     
     
     
+    
+    
     public var strDate:String = "";
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        
         // Do any additional setup after loading the view.
         
     }
@@ -42,8 +47,12 @@ class NewAlarmViewController: UIViewController {
 
     @IBAction func btnAddAlarm(_ sender: Any) {
 
-
+        let db = Firestore.firestore()
         lblSelectedTime.text = strDate;
+        
+        let dict : [String : Any] = ["time" : strDate];
+        
+        db.collection("alarms").addDocument(data: dict)
 
         //alarmsVC.alarm = strDate;
 

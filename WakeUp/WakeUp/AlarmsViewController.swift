@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class AlarmsViewController: UIViewController {
 
@@ -22,8 +23,20 @@ class AlarmsViewController: UIViewController {
      
         getCurrentDateTime();
         
-//            lblAlarm1.text = alarm;
-        
+        let db = Firestore.firestore();
+        db.collection("alarms").getDocuments{(snapshot, error) in
+            if error != nil {
+                print(error!)
+            }
+            else {
+                for document in (snapshot?.documents)! {
+                    if let time = document.data()["time"] as? String {
+//                        self.lblAlarm1.text = time;
+                        print(time);
+                    }
+                }
+            }
+        }
     }
     
     

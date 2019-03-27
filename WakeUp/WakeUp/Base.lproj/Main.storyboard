@@ -171,6 +171,7 @@
         <image name="second" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="I3l-Tx-LgE"/>
         <segue reference="rbm-sJ-5wg"/>
     </inferredMetricsTieBreakers>
 </document>
