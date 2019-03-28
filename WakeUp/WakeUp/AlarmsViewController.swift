@@ -11,6 +11,7 @@ import FirebaseFirestore
 
 class AlarmsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
+    @IBOutlet weak var collectionView: UICollectionView!
     
     @IBOutlet weak var lblAlarm1: UILabel!
     
@@ -42,7 +43,7 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
                         self.alarmArray.append(time);
                         print(self.alarmArray)
                         
-                        
+                        self.collectionView.reloadData()
                     }
                 }
             }
