@@ -18,11 +18,14 @@ class NewAlarmViewController: UIViewController {
     
     @IBOutlet weak var lblSelectedTime: UILabel!
     
+    @IBOutlet weak var txtDescription: UITextField!
     
     
     
     
     public var strDate:String = "";
+    
+    var alarmDescription:String = "";
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,31 +35,21 @@ class NewAlarmViewController: UIViewController {
         
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if (segue.identifier ==  "toAlarmViewController"){
-//            let alarmViewController = segue.destination as!
-//            AlarmsViewController;
-//
-//            alarmViewController.alarm = "sad";
-//
-//
-//
-//        }
-//    }
-    
-
-    @IBAction func btnAddAlarm(_ sender: Any) {
-
+    @IBAction func btnNewAlarm(_ sender: Any) {
+        
         let db = Firestore.firestore()
         lblSelectedTime.text = strDate;
         
-        let dict : [String : Any] = ["time" : strDate];
+        getSettings();
+        
+        let dict : [String : Any] = ["time" : strDate,              "description" : alarmDescription];
         
         db.collection("alarms").addDocument(data: dict)
-
+        
+        self.performSegue(withIdentifier: "ToAlarmsVC", sender: nil)
         //alarmsVC.alarm = strDate;
-
     }
+
     
     @IBAction func dpSelectTime(_ sender: Any) {
         
@@ -65,5 +58,11 @@ class NewAlarmViewController: UIViewController {
         
         strDate = timeFormatter.string(from: dpSelectedTime.date);
         // do what you want to do with the string.
+    }
+    
+    
+    func getSettings() {
+        // Require empty handeling
+        alarmDescription = txtDescription.text!;
     }
 }

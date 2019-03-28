@@ -13,13 +13,14 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    @IBOutlet weak var lblAlarm1: UILabel!
     
-    @IBOutlet weak var lblCurrentDateTime: UILabel!
+    @IBOutlet weak var titleCurrentDateTime: UINavigationItem!
     
-    var alarm: String = "";
     
-    var alarmArray : [String] = [];
+    
+    var arrTime : [String] = [];
+    
+    var arrDescription : [String] = [];
     
     
     override func viewDidLoad() {
@@ -38,19 +39,25 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
             }
             else {
                 for document in (snapshot?.documents)! {
-                    if let time = document.data()["time"] as? String {
-                        //                        self.lblAlarm1.text = time;
-                        self.alarmArray.append(time);
-                        print(self.alarmArray)
+                    if let description = document.data()["description"] as? String {
+                        self.arrDescription.append(description);
                         
-                        self.collectionView.reloadData()
+                        if let time = document.data()["time"] as? String  {
+                            self.arrTime.append(time);
+
+
+                            //                        print(self.arrTime)
+                            self.collectionView.reloadData()
+                        }
+                       
                     }
+
                 }
             }
         }
         
         
-        print(alarmArray)
+       
     }
     
     
@@ -60,19 +67,28 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
         formatter.timeStyle = .short;
         let dateTime: String = formatter.string(from: Date());
         
-        lblCurrentDateTime.text = dateTime;
+        titleCurrentDateTime.title = dateTime;
         
     }
     
     
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return alarmArray.count;
+        return arrTime.count;
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
         
-        cell.lblCollectionItem.text = alarmArray[indexPath.item];
+//        cell.lblAlarmDescription.text
+        
+        cell.lblAlarmTime.text = arrTime[indexPath.item];
+        
+        cell.lblAlarmDescription.text = arrDescription[indexPath.item];
+        
+        
+        
+        
+//        print (arrTime[indexPath.item]);
         
         return cell;
     }

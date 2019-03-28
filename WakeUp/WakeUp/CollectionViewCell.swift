@@ -10,6 +10,8 @@ import UIKit
 
 class CollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var lblCollectionItem: UILabel!
+    @IBOutlet weak var lblAlarmDescription: UILabel!
+    
+    @IBOutlet weak var lblAlarmTime: UILabel!
     
 }
