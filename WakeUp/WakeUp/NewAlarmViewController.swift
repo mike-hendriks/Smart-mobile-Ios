@@ -16,7 +16,7 @@ class NewAlarmViewController: UIViewController {
     
     @IBOutlet weak var dpSelectedTime: UIDatePicker!
     
-    @IBOutlet weak var lblSelectedTime: UILabel!
+  
     
     @IBOutlet weak var txtDescription: UITextField!
     
@@ -38,31 +38,45 @@ class NewAlarmViewController: UIViewController {
     @IBAction func btnNewAlarm(_ sender: Any) {
         
         let db = Firestore.firestore()
-        lblSelectedTime.text = strDate;
+ 
         
-        getSettings();
+
         
-        let dict : [String : Any] = ["time" : strDate,              "description" : alarmDescription];
+        let dict : [String : Any] = ["time" : strDate,
+                                     "description" : alarmDescription];
         
         db.collection("alarms").addDocument(data: dict)
         
-        self.performSegue(withIdentifier: "ToAlarmsVC", sender: nil)
-        //alarmsVC.alarm = strDate;
+        if(getSettings()) {
+            self.performSegue(withIdentifier: "ToAlarmsVC", sender: nil)
+        }else {
+            print("Fill in all the fields")
+        }
+
     }
 
     
     @IBAction func dpSelectTime(_ sender: Any) {
         
         let timeFormatter = DateFormatter()
-        timeFormatter.timeStyle = DateFormatter.Style.short
+        timeFormatter.dateFormat = "HH:mm";
         
         strDate = timeFormatter.string(from: dpSelectedTime.date);
         // do what you want to do with the string.
     }
     
     
-    func getSettings() {
+    func getSettings() -> Bool {
         // Require empty handeling
-        alarmDescription = txtDescription.text!;
+        if txtDescription.text != "" {
+            alarmDescription = txtDescription.text!;
+            
+            
+        }
+        
+        else {
+            return false;
+        }
+        return true;
     }
 }
