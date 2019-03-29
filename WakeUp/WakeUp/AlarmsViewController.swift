@@ -16,6 +16,10 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     @IBOutlet weak var titleCurrentDateTime: UINavigationItem!
     
+    var currentTime : String = "";
+    
+    var timer = Timer();
+    
     
     
     var arrTime : [String] = [];
@@ -27,6 +31,7 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
         super.viewDidLoad()
      
         getCurrentDateTime();
+        scheduledTimerWithTimeInterval();
         getAlarmsFromDB();
 
     }
@@ -60,14 +65,21 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
        
     }
     
+    func scheduledTimerWithTimeInterval() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.getCurrentDateTime), userInfo: nil, repeats: true)
+    }
     
-    func getCurrentDateTime() {
+    
+    @objc func getCurrentDateTime() {
         let formatter = DateFormatter()
-        formatter.dateStyle = .long;
-        formatter.timeStyle = .short;
+        formatter.dateFormat = "HH:mm"
         let dateTime: String = formatter.string(from: Date());
         
-        titleCurrentDateTime.title = dateTime;
+        currentTime = dateTime;
+        
+        titleCurrentDateTime.title = currentTime;
+        
+        print("timer called!")
         
     }
     

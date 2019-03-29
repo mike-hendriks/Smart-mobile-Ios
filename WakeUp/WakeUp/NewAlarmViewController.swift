@@ -37,17 +37,19 @@ class NewAlarmViewController: UIViewController {
     
     @IBAction func btnNewAlarm(_ sender: Any) {
         
-        let db = Firestore.firestore()
- 
-        
 
         
-        let dict : [String : Any] = ["time" : strDate,
-                                     "description" : alarmDescription];
-        
-        db.collection("alarms").addDocument(data: dict)
-        
         if(getSettings()) {
+            let db = Firestore.firestore()
+            
+            
+            
+            
+            let dict : [String : Any] = ["time" : strDate,
+                                         "description" : alarmDescription];
+            
+            db.collection("alarms").addDocument(data: dict)
+            
             self.performSegue(withIdentifier: "ToAlarmsVC", sender: nil)
         }else {
             print("Fill in all the fields")
