@@ -77,7 +77,7 @@ class NewAlarmViewController: UIViewController {
         if txtDescription.text != "" {
             alarmDescription = txtDescription.text!;
             
-            
+            timeOffset = segmentedControl.titleForSegment(at: segmentedControl.selectedSegmentIndex)!;
         }
         
         else {
