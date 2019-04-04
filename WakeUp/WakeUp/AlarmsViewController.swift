@@ -155,6 +155,15 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
     print(indexPath.item)
     }
     
+    
+    func checkJourney() -> Void{
+        Ns.route(parameters: "fromStation=br&toStation=ehv") { (results:[Ns]) in
+            
+            print(results[0].status)
+            
+        }
+    }
+    
 
 }
 
