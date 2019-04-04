@@ -21,6 +21,8 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     var timer = Timer();
     
+    var convertedDate:Date?;
+    
     var audioPlayer : AVAudioPlayer?;
     
     
@@ -28,6 +30,9 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
     var arrTime : [String] = [];
     
     var arrDescription : [String] = [];
+    
+    
+    
     
     
     override func viewDidLoad() {
@@ -47,15 +52,21 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
             }
             else {
                 for document in (snapshot?.documents)! {
+                    //
                     if let description = document.data()["description"] as? String {
                         self.arrDescription.append(description);
                         
                         if let time = document.data()["time"] as? String  {
                             self.arrTime.append(time);
-
-
-                            //                        print(self.arrTime)
-                            self.collectionView.reloadData()
+                            
+                            if let offset = document.data()["timeOffset"] as? String {
+                                self.convertTime(time: time)
+                                if offset == "-30 min" {
+//                                    checkDisruption();
+                                }
+                                self.collectionView.reloadData()
+                            }
+                            
                         }
                        
                     }
@@ -74,9 +85,9 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     
     @objc func getCurrentDateTime() {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-        let dateTime: String = formatter.string(from: Date());
+        let currentDateToStringConverter = DateFormatter()
+        currentDateToStringConverter.dateFormat = "HH:mm"
+        let dateTime: String = currentDateToStringConverter.string(from: Date());
         
         currentTime = dateTime;
         
@@ -110,6 +121,13 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
         } catch let error {
             print(error.localizedDescription)
         }
+    }
+    
+    func convertTime(time:String) {
+        let stringToDateConverter = DateFormatter();
+        stringToDateConverter.dateFormat = "HH:mm";
+        convertedDate = stringToDateConverter.date(from: time);
+        print(convertedDate);
     }
     
     

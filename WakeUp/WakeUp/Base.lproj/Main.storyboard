@@ -189,6 +189,7 @@
                     </view>
                     <connections>
                         <outlet property="dpSelectedTime" destination="rrQ-Ao-GJ0" id="dUs-De-ggO"/>
+                        <outlet property="segmentedControl" destination="Adu-yI-RoC" id="oN0-6R-lcl"/>
                         <outlet property="txtDescription" destination="UNY-nf-Poq" id="drh-kd-LJp"/>
                         <segue destination="49e-Tb-3d3" kind="show" identifier="ToAlarmsVC" id="0cK-Rg-x9D"/>
                     </connections>
