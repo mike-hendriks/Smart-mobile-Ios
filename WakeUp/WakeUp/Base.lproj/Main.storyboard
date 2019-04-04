@@ -191,6 +191,8 @@
                         <outlet property="dpSelectedTime" destination="rrQ-Ao-GJ0" id="dUs-De-ggO"/>
                         <outlet property="segmentedControl" destination="Adu-yI-RoC" id="oN0-6R-lcl"/>
                         <outlet property="txtDescription" destination="UNY-nf-Poq" id="drh-kd-LJp"/>
+                        <outlet property="txtStationFrom" destination="vXR-rx-Geb" id="GMg-AW-bNQ"/>
+                        <outlet property="txtStationTo" destination="k15-WR-cUv" id="2hx-LR-Twm"/>
                         <segue destination="49e-Tb-3d3" kind="show" identifier="ToAlarmsVC" id="0cK-Rg-x9D"/>
                     </connections>
                 </viewController>
