@@ -21,6 +21,7 @@
 		E0911372224C165B00EB2480 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E0911371224C165B00EB2480 /* GoogleService-Info.plist */; };
 		E0911374224C1D2000EB2480 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E0911373224C1D2000EB2480 /* .gitignore */; };
 		E0911376224C256B00EB2480 /* CollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0911375224C256B00EB2480 /* CollectionViewCell.swift */; };
+		E0911378224E39C200EB2480 /* ding.wav in Resources */ = {isa = PBXBuildFile; fileRef = E0911377224E39C200EB2480 /* ding.wav */; };
 		F0484EA380FB3C82F8B9BB48 /* Pods_WakeUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 41C2517D568DF310DC4E387F /* Pods_WakeUp.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,7 @@
 		E0911371224C165B00EB2480 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		E0911373224C1D2000EB2480 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		E0911375224C256B00EB2480 /* CollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewCell.swift; sourceTree = "<group>"; };
+		E0911377224E39C200EB2480 /* ding.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = ding.wav; sourceTree = "<group>"; };
 		E3723B51B5CE4E884D63A60E /* Pods-WakeUpTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WakeUpTests.debug.xcconfig"; path = "Target Support Files/Pods-WakeUpTests/Pods-WakeUpTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E4BE38784CBFABA1E55675AA /* Pods-WakeUp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WakeUp.release.xcconfig"; path = "Target Support Files/Pods-WakeUp/Pods-WakeUp.release.xcconfig"; sourceTree = "<group>"; };
 		F6805E4D716384B9DD2E882D /* Pods_WakeUpTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WakeUpTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -155,6 +157,7 @@
 				E060F4272243C170001FB9AF /* Main.storyboard */,
 				E0911375224C256B00EB2480 /* CollectionViewCell.swift */,
 				E060F42A2243C172001FB9AF /* Assets.xcassets */,
+				E0911377224E39C200EB2480 /* ding.wav */,
 				E060F42C2243C172001FB9AF /* LaunchScreen.storyboard */,
 				E060F42F2243C172001FB9AF /* Info.plist */,
 				E060F4572244E616001FB9AF /* NewAlarmViewController.swift */,
@@ -288,6 +291,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0911378224E39C200EB2480 /* ding.wav in Resources */,
 				E0911374224C1D2000EB2480 /* .gitignore in Resources */,
 				E060F42E2243C172001FB9AF /* LaunchScreen.storyboard in Resources */,
 				E0911372224C165B00EB2480 /* GoogleService-Info.plist in Resources */,

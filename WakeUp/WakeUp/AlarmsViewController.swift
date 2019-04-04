@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseFirestore
+import AVFoundation
 
 class AlarmsViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
@@ -19,6 +20,8 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
     var currentTime : String = "";
     
     var timer = Timer();
+    
+    var audioPlayer : AVAudioPlayer?;
     
     
     
@@ -81,6 +84,32 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         print("timer called!")
         
+        CheckIfCurrentTimeIsInArray();
+        
+    }
+    
+    func CheckIfCurrentTimeIsInArray() {
+        for time in arrTime {
+            if currentTime == time {
+                print("je moeder")
+                playSound();
+            }
+        }
+    }
+    
+    func playSound() {
+        if let audioPlayer = audioPlayer, audioPlayer.isPlaying { audioPlayer.stop() }
+        
+        guard let soundURL = Bundle.main.url(forResource: "ding", withExtension: "wav") else { return }
+        
+        do {
+            try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, mode: AVAudioSession.Mode.default)
+            try AVAudioSession.sharedInstance().setActive(true)
+            audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+            audioPlayer?.play()
+        } catch let error {
+            print(error.localizedDescription)
+        }
     }
     
     
