@@ -21,11 +21,14 @@ class NewAlarmViewController: UIViewController {
     @IBOutlet weak var txtDescription: UITextField!
     
     
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     
     public var strDate:String = "";
     
     var alarmDescription:String = "";
+    
+    var timeOffset:String = "";
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,7 +49,8 @@ class NewAlarmViewController: UIViewController {
             
             
             let dict : [String : Any] = ["time" : strDate,
-                                         "description" : alarmDescription];
+                                         "description" : alarmDescription,
+                                         "timeOffset" : timeOffset];
             
             db.collection("alarms").addDocument(data: dict)
             
@@ -60,10 +64,10 @@ class NewAlarmViewController: UIViewController {
     
     @IBAction func dpSelectTime(_ sender: Any) {
         
-        let timeFormatter = DateFormatter()
-        timeFormatter.dateFormat = "HH:mm";
+        let dateToStringConverter = DateFormatter()
+        dateToStringConverter.dateFormat = "HH:mm";
         
-        strDate = timeFormatter.string(from: dpSelectedTime.date);
+        strDate = dateToStringConverter.string(from: dpSelectedTime.date);
         // do what you want to do with the string.
     }
     

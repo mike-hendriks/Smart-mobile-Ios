@@ -30,6 +30,9 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
     var arrDescription : [String] = [];
     
     
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
      
@@ -74,9 +77,9 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     
     @objc func getCurrentDateTime() {
-        let formatter = DateFormatter()
-        formatter.dateFormat = "HH:mm"
-        let dateTime: String = formatter.string(from: Date());
+        let currentDateToStringConverter = DateFormatter()
+        currentDateToStringConverter.dateFormat = "HH:mm"
+        let dateTime: String = currentDateToStringConverter.string(from: Date());
         
         currentTime = dateTime;
         
