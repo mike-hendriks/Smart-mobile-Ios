@@ -32,8 +32,8 @@
                                 </items>
                             </navigationBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Q06-Dt-orn">
-                                <rect key="frame" x="16" y="84" width="343" height="536"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <rect key="frame" x="15.578745198463366" y="84" width="343.00000000000011" height="536"/>
+                                <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="3Ks-Cu-mEQ">
                                     <size key="itemSize" width="337" height="91"/>
@@ -49,13 +49,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="337" height="91"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44x-5v-YAZ">
-                                                    <rect key="frame" x="20" y="20" width="317" height="32"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dBf-6J-OJW">
                                                     <rect key="frame" x="20" y="52" width="317" height="28"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -63,16 +56,21 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XVf-Wd-xLj">
-                                                    <rect key="frame" x="271" y="41" width="46" height="30"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44x-5v-YAZ">
+                                                    <rect key="frame" x="20" y="20" width="317" height="32"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" title="Button"/>
-                                                    <connections>
-                                                        <action selector="deleteButton:" destination="9pv-A4-QxB" eventType="touchUpInside" id="Lra-DE-kjv"/>
-                                                    </connections>
-                                                </button>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" alpha="0.29999999999999999" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JrE-Uf-8SC">
+                                                    <rect key="frame" x="20" y="90" width="317" height="1"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </imageView>
                                             </subviews>
                                         </view>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="lightTextColor"/>
                                         <connections>
                                             <outlet property="lblAlarmDescription" destination="dBf-6J-OJW" id="r9X-h9-gmf"/>
                                             <outlet property="lblAlarmTime" destination="44x-5v-YAZ" id="qHC-Ii-qN4"/>
@@ -193,6 +191,8 @@
                         <outlet property="dpSelectedTime" destination="rrQ-Ao-GJ0" id="dUs-De-ggO"/>
                         <outlet property="segmentedControl" destination="Adu-yI-RoC" id="oN0-6R-lcl"/>
                         <outlet property="txtDescription" destination="UNY-nf-Poq" id="drh-kd-LJp"/>
+                        <outlet property="txtStationFrom" destination="vXR-rx-Geb" id="GMg-AW-bNQ"/>
+                        <outlet property="txtStationTo" destination="k15-WR-cUv" id="2hx-LR-Twm"/>
                         <segue destination="49e-Tb-3d3" kind="show" identifier="ToAlarmsVC" id="0cK-Rg-x9D"/>
                     </connections>
                 </viewController>

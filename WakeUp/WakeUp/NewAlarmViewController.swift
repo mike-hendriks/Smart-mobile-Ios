@@ -16,12 +16,14 @@ class NewAlarmViewController: UIViewController {
     
     @IBOutlet weak var dpSelectedTime: UIDatePicker!
     
-  
-    
     @IBOutlet weak var txtDescription: UITextField!
     
+    @IBOutlet weak var txtStationFrom: UITextField!
+    
+    @IBOutlet weak var txtStationTo: UITextField!
     
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
     
     
     public var strDate:String = "";
@@ -30,9 +32,11 @@ class NewAlarmViewController: UIViewController {
     
     var timeOffset:String = "";
     
+    var stationFrom:String = "";
+    var stationTo:String = "";
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         // Do any additional setup after loading the view.
         
@@ -50,7 +54,10 @@ class NewAlarmViewController: UIViewController {
             
             let dict : [String : Any] = ["time" : strDate,
                                          "description" : alarmDescription,
-                                         "timeOffset" : timeOffset];
+                                         "timeOffset" : timeOffset,
+                                         "stationFrom" : stationFrom,
+                                         "stationTo" : stationTo
+            ];
             
             db.collection("alarms").addDocument(data: dict)
             
@@ -78,6 +85,11 @@ class NewAlarmViewController: UIViewController {
             alarmDescription = txtDescription.text!;
             
             timeOffset = segmentedControl.titleForSegment(at: segmentedControl.selectedSegmentIndex)!;
+            
+            stationFrom = txtStationFrom.text!;
+            stationTo = txtStationTo.text!;
+            
+            
         }
         
         else {

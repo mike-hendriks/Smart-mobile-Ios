@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2775C59422561C110064DB82 /* Ns.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2775C59322561C110064DB82 /* Ns.swift */; };
 		9B8766CBAC7BBB15A7A339EA /* Pods_WakeUpUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AA90C4231034894C8B986DB8 /* Pods_WakeUpUITests.framework */; };
 		ABD327EA786D010031662951 /* Pods_WakeUp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DCE1C19BCD43A324C478A8EF /* Pods_WakeUp.framework */; };
 		DD5BDCB2D29F87D87F6498DA /* Pods_WakeUpTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 47D486C205096CFFD683B05F /* Pods_WakeUpTests.framework */; };
@@ -43,6 +44,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2775C59322561C110064DB82 /* Ns.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ns.swift; sourceTree = "<group>"; };
 		47D486C205096CFFD683B05F /* Pods_WakeUpTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WakeUpTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6638B4436F74D545B80FAE57 /* Pods-WakeUpTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WakeUpTests.debug.xcconfig"; path = "Target Support Files/Pods-WakeUpTests/Pods-WakeUpTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8A0B1F226E7F911637D1DD31 /* Pods-WakeUpTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WakeUpTests.release.xcconfig"; path = "Target Support Files/Pods-WakeUpTests/Pods-WakeUpTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				E060F4232243C170001FB9AF /* AlarmsViewController.swift */,
 				E060F4252243C170001FB9AF /* NSViewController.swift */,
 				E060F4272243C170001FB9AF /* Main.storyboard */,
+				2775C59322561C110064DB82 /* Ns.swift */,
 				E0911375224C256B00EB2480 /* CollectionViewCell.swift */,
 				E060F42A2243C172001FB9AF /* Assets.xcassets */,
 				E0911377224E39C200EB2480 /* ding.wav */,
@@ -426,6 +429,7 @@
 			files = (
 				E0911376224C256B00EB2480 /* CollectionViewCell.swift in Sources */,
 				E060F4262243C170001FB9AF /* NSViewController.swift in Sources */,
+				2775C59422561C110064DB82 /* Ns.swift in Sources */,
 				E060F4222243C170001FB9AF /* AppDelegate.swift in Sources */,
 				E060F4582244E616001FB9AF /* NewAlarmViewController.swift in Sources */,
 				E060F4242243C170001FB9AF /* AlarmsViewController.swift in Sources */,
