@@ -66,17 +66,19 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
                         if let time = document.data()["time"] as? String  {
                             self.arrTime.append(time);
                             
+                            let stringToDateConverter = DateFormatter();
+                            stringToDateConverter.dateFormat = "HH:mm";
+                            let timeData : Date;
+                            timeData = stringToDateConverter.date(from: String(time))!;
+                            print(timeData)
+                            
+                            let minus30Time = self.calender.date(byAdding: .minute, value: -30, to: timeData);
+                            print(minus30Time!);
+                            
                             if let offset = document.data()["timeOffset"] as? String {
                                 
                                 if offset == "-30 min" {
-                                    let stringToDateConverter = DateFormatter();
-                                    stringToDateConverter.dateFormat = "HH:mm";
-                                    let timeData : Date;
-                                    timeData = stringToDateConverter.date(from: String(time))!;
-                                    print(timeData)
-                                    
-                                    let minus30Time = self.calender.date(byAdding: .minute, value: -30, to: timeData);
-                                    print(minus30Time!); print("time removed")
+   
 
                                 }
                                 if offset == "Default alarm" {
@@ -84,7 +86,7 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
                                     stringToDateConverter.dateFormat = "HH:mm";
                                     let timeData : Date;
                                     timeData = stringToDateConverter.date(from: String(time))!;
-                                    print(timeData); print("Default value")
+//                                    print(timeData); print("Default value")
                                 
                                     
                                 }
@@ -96,7 +98,7 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
                                     print(timeData)
                                     
                                     let add30Time = self.calender.date(byAdding: .minute, value: 30, to: timeData);
-                                    print(add30Time!); print("Time added")
+//                                    print(add30Time!); print("Time added")
                                     
                                 }
                                 
