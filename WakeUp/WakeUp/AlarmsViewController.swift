@@ -25,14 +25,13 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     var audioPlayer : AVAudioPlayer?;
     
-    
-    
     var arrTime : [String] = [];
     
     var arrDescription : [String] = [];
     
+    var arrStationFrom : [String] = [];
     
-    
+    var arrStationTo : [String] = [];
     
     
     override func viewDidLoad() {
@@ -52,7 +51,7 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
             }
             else {
                 for document in (snapshot?.documents)! {
-                    //
+                    
                     if let description = document.data()["description"] as? String {
                         self.arrDescription.append(description);
                         
@@ -64,6 +63,15 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
                                 if offset == "-30 min" {
 //                                    checkDisruption();
                                 }
+                                
+                                if let stationFrom = document.data()["stationFrom"] as? String {
+                                    self.arrStationFrom.append(stationFrom);
+                                }
+                                
+                                if let stationTo = document.data()["stationTo"] as? String {
+                                    self.arrStationFrom.append(stationTo);
+                                }
+                                
                                 self.collectionView.reloadData()
                             }
                             
@@ -152,16 +160,19 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
         return cell;
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    print(indexPath.item)
+        print(indexPath.item)
     }
     
     
-    func checkJourney() -> Void{
-        Ns.route(parameters: "fromStation=br&toStation=ehv") { (results:[Ns]) in
+    func checkJourney(stationFrom:String, stationTo:String) -> String{
+        var status:String = "";
+        Ns.route(parameters: "fromStation=" + stationFrom + "&toStation=" + stationTo) { (results:[Ns]) in
             
-            print(results[0].status)
+            status = results[0].status
             
         }
+        
+        return status
     }
     
 
