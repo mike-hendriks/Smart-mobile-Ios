@@ -31,7 +31,7 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     var arrDescription : [String] = [];
     
-    
+    let calender = Calendar.current;
     
     
     
@@ -42,6 +42,10 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
         scheduledTimerWithTimeInterval();
         getAlarmsFromDB();
 
+    }
+    
+    @IBAction func deleteButton(_ sender: Any) {
+        
     }
     
     func getAlarmsFromDB() {
@@ -60,9 +64,37 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
                             self.arrTime.append(time);
                             
                             if let offset = document.data()["timeOffset"] as? String {
-                                self.convertTime(time: time)
+                                
                                 if offset == "-30 min" {
-//                                    checkDisruption();
+                                    let stringToDateConverter = DateFormatter();
+                                    stringToDateConverter.dateFormat = "HH:mm";
+                                    let timeData : Date;
+                                    timeData = stringToDateConverter.date(from: String(time))!;
+                                    print(timeData)
+                                    
+                                    let minus30Time = self.calender.date(byAdding: .minute, value: -30, to: timeData);
+                                    print(minus30Time!); print("time removed")
+
+                                }
+                                if offset == "Default alarm" {
+                                    let stringToDateConverter = DateFormatter();
+                                    stringToDateConverter.dateFormat = "HH:mm";
+                                    let timeData : Date;
+                                    timeData = stringToDateConverter.date(from: String(time))!;
+                                    print(timeData); print("Default value")
+                                
+                                    
+                                }
+                                if offset == "+30 min" {
+                                    let stringToDateConverter = DateFormatter();
+                                    stringToDateConverter.dateFormat = "HH:mm";
+                                    let timeData : Date;
+                                    timeData = stringToDateConverter.date(from: String(time))!;
+                                    print(timeData)
+                                    
+                                    let add30Time = self.calender.date(byAdding: .minute, value: 30, to: timeData);
+                                    print(add30Time!); print("Time added")
+                                    
                                 }
                                 self.collectionView.reloadData()
                             }
@@ -124,11 +156,11 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     func convertTime(time:String) {
-        let stringToDateConverter = DateFormatter();
-        stringToDateConverter.dateFormat = "HH:mm";
-        convertedDate = stringToDateConverter.date(from: time);
-        print(convertedDate);
+
+        
     }
+    
+    
     
     
     
