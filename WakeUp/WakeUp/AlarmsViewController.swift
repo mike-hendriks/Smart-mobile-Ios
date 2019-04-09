@@ -14,7 +14,6 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    
     @IBOutlet weak var titleCurrentDateTime: UINavigationItem!
     
     var currentTime : String = ""
@@ -131,6 +130,19 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
         
        
     }
+    
+    @IBAction func btnGhetto(_ sender: Any) {
+        
+        if checkJourney(stationFrom: "br", stationTo: "ehv") == "NORMAL" {
+            print("je moeder")
+        }
+        else {
+            print("je vader")
+        }
+    }
+    
+    
+    
     
     func scheduledTimerWithTimeInterval() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.getCurrentDateTime), userInfo: nil, repeats: true)
