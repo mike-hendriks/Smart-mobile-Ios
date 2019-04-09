@@ -17,27 +17,26 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     @IBOutlet weak var titleCurrentDateTime: UINavigationItem!
     
-    var currentTime : String = "";
+    var currentTime : String = ""
     
-    var timer = Timer();
+    var timer = Timer()
     
-    var convertedDate:Date?;
+    var convertedDate:Date?
     
-    var audioPlayer : AVAudioPlayer?;
+    var audioPlayer : AVAudioPlayer?
     
-    var arrTime : [String] = [];
+    var arrTime : [String] = []
     
-    var arrDescription : [String] = [];
+    var arrDescription : [String] = []
     
-
-    let calender = Calendar.current;
+    let calender = Calendar.current
     
-
-    var arrStationFrom : [String] = [];
+    var arrStationFrom : [String] = []
     
-    var arrStationTo : [String] = [];
-
- 
+    var arrStationTo : [String] = []
+    
+    var arrTimesMinus30 : [String] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
      
@@ -52,6 +51,7 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     func getAlarmsFromDB() {
+        
         let db = Firestore.firestore();
         db.collection("alarms").getDocuments{(snapshot, error) in
             if error != nil {
@@ -139,17 +139,28 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         titleCurrentDateTime.title = currentTime;
         
-        print("timer called!")
+//        print("timer called!")
         
         CheckIfCurrentTimeIsInArray();
         
     }
     
     func CheckIfCurrentTimeIsInArray() {
+//        Check if alarm should go off
         for time in arrTime {
             if currentTime == time {
                 print("je moeder")
                 playSound();
+            }
+        }
+        
+//        Check half hour before alarm if train has a disruption
+        for (index, time) in arrTimesMinus30.enumerated() {
+            let stationFrom:String = arrStationFrom[index]
+            let stationTo:String = arrStationTo[index]
+            
+            if currentTime == time {
+                print(checkJourney(stationFrom: stationFrom, stationTo: stationTo))
             }
         }
     }
@@ -203,12 +214,14 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     
     func checkJourney(stationFrom:String, stationTo:String) -> String{
-        var status:String = "";
+        var status : String = ""
+        
         Ns.route(parameters: "fromStation=" + stationFrom + "&toStation=" + stationTo) { (results:[Ns]) in
-            
-            status = results[0].status
-            
+//          3th item in array to make a delay (You won't make the train within 5
+            status = results[3].status
         }
+        
+        sleep(1)
         
         return status
     }
