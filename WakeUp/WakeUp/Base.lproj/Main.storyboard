@@ -96,7 +96,6 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Alarm" image="first" id="acW-dT-cKf"/>
                     <connections>
-                        <outlet property="btnGhetto" destination="5i2-hB-Oeb" id="kHw-eW-iGt"/>
                         <outlet property="collectionView" destination="Q06-Dt-orn" id="Avh-1m-3cq"/>
                         <outlet property="titleCurrentDateTime" destination="RIu-j6-Drx" id="IrC-Xs-KXY"/>
                     </connections>

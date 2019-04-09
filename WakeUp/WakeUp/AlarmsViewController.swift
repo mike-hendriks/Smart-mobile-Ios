@@ -134,10 +134,10 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
     @IBAction func btnGhetto(_ sender: Any) {
         
         if checkJourney(stationFrom: "br", stationTo: "ehv") == "NORMAL" {
-            print("je moeder")
+            
         }
-        else {
-            print("je vader")
+        else if checkJourney(stationFrom: "br", stationTo: "ehv") == "DISRUPTION" {
+            
         }
     }
     
