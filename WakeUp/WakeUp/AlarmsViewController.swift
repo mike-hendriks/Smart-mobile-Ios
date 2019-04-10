@@ -286,11 +286,10 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
     }
     
     func showAlert() {
-        let alert = UIAlertController(title: "Wakker worden", message: "It's recommended you bring your towel before continuing.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Wake up", message: "It's 30 minutes before your alarm, there is a problem with your journey!", preferredStyle: .alert)
 
         alert.addAction(UIAlertAction(title: "Stop", style: .default, handler: stopSound))
-        alert.addAction(UIAlertAction(title: "Love this alarm", style: .cancel, handler: nil))
-
+        
         self.present(alert, animated: true)
     }
     
