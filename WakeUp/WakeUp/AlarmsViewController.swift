@@ -40,11 +40,13 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     var minus30Time : Date?;
     
-    var is30minEarlier : Bool = false;
+    var is30minEarlier : Bool = false
     
     var arrOffsets : [String] = []
     
     var playAlarm : Bool = false
+
+    var sameMinute : Bool = false
 
  
     override func viewDidLoad() {
@@ -151,13 +153,9 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
         }
     }
     
-    
-    
-    
     func scheduledTimerWithTimeInterval() {
         timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(self.getCurrentDateTime), userInfo: nil, repeats: true)
     }
-    
     
     @objc func getCurrentDateTime() {
         let currentDateToStringConverter = DateFormatter()
@@ -188,33 +186,33 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
         for (index, time) in arrTimesMinus30.enumerated() {
             
             if currentTime == time {
-                if playAlarm == false {
+                if sameMinute != true {
+                    sameMinute = true
+                    if playAlarm == false {
                 
-                    let stationFrom:String = arrStationFrom[index]
-                    let stationTo:String = arrStationTo[index]
-                
-                    let journeyStatus = checkJourney(stationFrom: stationFrom, stationTo: stationTo)
-                
-//                    TODO == set normal to != normal
-                    if (journeyStatus == "NORMAL"){
-                        if(arrOffsets[index] == "-30"){
-                            self.playAlarm = true
+                        let stationFrom:String = arrStationFrom[index]
+                        let stationTo:String = arrStationTo[index]
+                    
+                        let journeyStatus = checkJourney(stationFrom: stationFrom, stationTo: stationTo)
+                    
+    //                    TODO == set normal to != normal
+                        if (journeyStatus == "NORMAL"){
+                            if(arrOffsets[index] == "-30"){
+                                self.playAlarm = true
+                                
+                                let qeue = DispatchQueue(label: "asyncQeue")
+    //
+                                qeue.async {
+                                    self.showAlert()
+                                    self.playSoundLoop()
+                                }
                             
-                            let qeue = DispatchQueue(label: "testqeue");
-//
-                            qeue.async {
-                                self.showAlert()
-                                self.playSoundLoop()
                             }
-//                            showAlert()
-//                            playSoundLoop()
-//                            sleep(5)
-                            
-                            
-                            print("testeeeee")
                         }
                     }
                 }
+            } else {
+                sameMinute = false
             }
         }
     }
