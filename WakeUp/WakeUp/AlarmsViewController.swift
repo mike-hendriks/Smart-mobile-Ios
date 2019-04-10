@@ -157,8 +157,6 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         currentTime = dateTime;
         
-        titleCurrentDateTime.title = currentTime;
-        
         CheckIfCurrentTimeIsInArray();
         
     }

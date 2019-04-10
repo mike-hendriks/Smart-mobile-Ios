@@ -10,7 +10,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Alarm-->
+        <!--Alarms-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="AlarmsViewController" customModule="WakeUp" customModuleProvider="target" sceneMemberID="viewController">
@@ -22,7 +22,7 @@
                                 <rect key="frame" x="0.0" y="38" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Title" id="RIu-j6-Drx">
+                                    <navigationItem title="Alarms" id="RIu-j6-Drx">
                                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="J8b-Ob-tt0">
                                             <connections>
                                                 <segue destination="dLv-Y4-YUu" kind="show" id="xHP-O3-7ds"/>
@@ -86,7 +86,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Alarm" image="Webp.net-resizeimage (1)" selectedImage="Webp.net-resizeimage (1)" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="Alarms" image="Webp.net-resizeimage (1)" selectedImage="Webp.net-resizeimage (1)" id="acW-dT-cKf"/>
                     <connections>
                         <outlet property="collectionView" destination="Q06-Dt-orn" id="Avh-1m-3cq"/>
                         <outlet property="titleCurrentDateTime" destination="RIu-j6-Drx" id="IrC-Xs-KXY"/>
