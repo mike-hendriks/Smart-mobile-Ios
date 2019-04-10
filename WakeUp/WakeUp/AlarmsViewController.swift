@@ -46,8 +46,9 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
     
     var playAlarm : Bool = false
 
-    var sameMinute : Bool = false
-
+    var sameMinuteDefault : Bool = false
+    
+    var sameMinute30Before : Bool = false
  
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -177,42 +178,56 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         for time in arrTime {
             if currentTime == time {
-                playSound();
-                
+                if sameMinuteDefault != true {
+                    sameMinuteDefault = true
+                    if playAlarm == false {
+                    
+                        self.playAlarm = true
+                        
+                        let qeue = DispatchQueue(label: "normalAlarmQeue")
+                        //
+                        qeue.async {
+                            self.showAlert()
+                            self.playSoundLoop()
+                        }
+                    }
+                }
+            } else {
+                sameMinuteDefault = false
             }
         }
         
 //        Check half hour before alarm if train has a disruption
         for (index, time) in arrTimesMinus30.enumerated() {
-            
+
             if currentTime == time {
-                if sameMinute != true {
-                    sameMinute = true
+                if sameMinute30Before != true {
+                    sameMinute30Before = true
                     if playAlarm == false {
-                
+
                         let stationFrom:String = arrStationFrom[index]
                         let stationTo:String = arrStationTo[index]
-                    
+
                         let journeyStatus = checkJourney(stationFrom: stationFrom, stationTo: stationTo)
-                    
+
     //                    TODO == set normal to != normal
                         if (journeyStatus == "NORMAL"){
                             if(arrOffsets[index] == "-30"){
                                 self.playAlarm = true
-                                
-                                let qeue = DispatchQueue(label: "asyncQeue")
+
+                                let qeue = DispatchQueue(label: "-30MinQeue")
     //
                                 qeue.async {
                                     self.showAlert()
                                     self.playSoundLoop()
                                 }
-                            
+
                             }
                         }
                     }
                 }
             } else {
-                sameMinute = false
+                sameMinute30Before = false
             }
         }
     }
