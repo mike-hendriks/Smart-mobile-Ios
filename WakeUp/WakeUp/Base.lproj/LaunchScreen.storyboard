@@ -19,8 +19,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Word 'NS wakker" textAlignment="center" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SWH-Vu-WZo">
-                                <rect key="frame" x="66.513194444440614" y="270.11388888888951" width="240.00000000000011" height="128.00000000000006"/>
-                                <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
+                                <rect key="frame" x="66.513194444440614" y="270.11388888888928" width="240.00000000000011" height="128.00000000000006"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
