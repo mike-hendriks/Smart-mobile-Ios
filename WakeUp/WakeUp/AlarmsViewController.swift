@@ -200,11 +200,17 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
                         if(arrOffsets[index] == "-30"){
                             self.playAlarm = true
                             
-                            showAlert()
-                            
+                            let qeue = DispatchQueue(label: "testqeue");
+//
+                            qeue.async {
+                                self.showAlert()
+                                self.playSoundLoop()
+                            }
+//                            showAlert()
+//                            playSoundLoop()
 //                            sleep(5)
                             
-                            playSoundLoop()
+                            
                             print("testeeeee")
                         }
                     }
