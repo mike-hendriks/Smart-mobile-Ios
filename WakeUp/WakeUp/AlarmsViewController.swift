@@ -42,6 +42,10 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
     var minus30Time : Date?;
     
     var is30minEarlier : Bool = false;
+    
+    var arrOffsets : [String] = []
+    
+    var playAlarm : Bool = false
 
  
     override func viewDidLoad() {
@@ -79,16 +83,21 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
                             print(self.timeData!)
                             
                             self.minus30Time = self.calender.date(byAdding: .minute, value: -30, to: self.timeData!)
-
                             
+                            let dateConverter = DateFormatter()
+                            dateConverter.dateFormat = "HH:mm"
+                            let dateTime: String = dateConverter.string(from: self.minus30Time!);
+                            
+                            
+                            self.arrTimesMinus30.append(dateTime)
                             
                             if let offset = document.data()["timeOffset"] as? String {
                                 
-//                                if offset == "-30 min" {
-//
-//
-//                                }
-//                                if offset == "Default alarm" {
+                                if offset == "-30 min" {
+                                    self.arrOffsets.append("-30");
+                                }
+                                if offset == "Default alarm" {
+                                    self.arrOffsets.append("default");
 //                                    let stringToDateConverter = DateFormatter();
 //                                    stringToDateConverter.dateFormat = "HH:mm";
 //                                    let timeData : Date;
@@ -96,8 +105,9 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
 ////                                    print(timeData); print("Default value")
 //
 //
-//                                }
-//                                if offset == "+30 min" {
+                                }
+                                if offset == "+30 min" {
+                                    self.arrOffsets.append("+30");
 //                                    let stringToDateConverter = DateFormatter();
 //                                    stringToDateConverter.dateFormat = "HH:mm";
 //                                    let timeData : Date;
@@ -107,14 +117,14 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
 //                                    let add30Time = self.calender.date(byAdding: .minute, value: 30, to: timeData);
 ////                                    print(add30Time!); print("Time added")
 //
-//                                }
+                                }
                                 
                                 if let stationFrom = document.data()["stationFrom"] as? String {
                                     self.arrStationFrom.append(stationFrom);
                                 }
                                 
                                 if let stationTo = document.data()["stationTo"] as? String {
-                                    self.arrStationFrom.append(stationTo);
+                                    self.arrStationTo.append(stationTo);
                                 }
                                 
                                 self.collectionView.reloadData()
@@ -148,8 +158,6 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
         
         titleCurrentDateTime.title = currentTime;
         
-//        print("timer called!")
-        
         CheckIfCurrentTimeIsInArray();
         
     }
@@ -166,11 +174,29 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
         
 //        Check half hour before alarm if train has a disruption
         for (index, time) in arrTimesMinus30.enumerated() {
-            let stationFrom:String = arrStationFrom[index]
-            let stationTo:String = arrStationTo[index]
             
             if currentTime == time {
-                print(checkJourney(stationFrom: stationFrom, stationTo: stationTo))
+                if playAlarm == false {
+                
+                    let stationFrom:String = arrStationFrom[index]
+                    let stationTo:String = arrStationTo[index]
+                
+                    let journeyStatus = checkJourney(stationFrom: stationFrom, stationTo: stationTo)
+                
+//                    TODO == set normal to != normal
+                    if (journeyStatus == "NORMAL"){
+                        if(arrOffsets[index] == "-30"){
+                            self.playAlarm = true
+                            
+                            showAlert()
+                            
+//                            sleep(5)
+                            
+                            playSoundLoop()
+                            print("testeeeee")
+                        }
+                    }
+                }
             }
         }
     }
@@ -190,18 +216,25 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
         }
     }
     
-//    func convertTime(time:String) {
-//
-//
-//    }
-    
-//
-//    func call30minBefore() {
-//        if is30minEarlier {
-//        }
-//
-//    }
-//
+    func playSoundLoop() {
+        
+        while self.playAlarm == true {
+        
+            if let audioPlayer = audioPlayer, audioPlayer.isPlaying { audioPlayer.stop() }
+            
+            guard let soundURL = Bundle.main.url(forResource: "ding", withExtension: "wav") else { return }
+            
+            do {
+                try AVAudioSession.sharedInstance().setCategory(AVAudioSession.Category.playback, mode: AVAudioSession.Mode.default)
+                try AVAudioSession.sharedInstance().setActive(true)
+                audioPlayer = try AVAudioPlayer(contentsOf: soundURL)
+                audioPlayer?.play()
+            } catch let error {
+                print(error.localizedDescription)
+            }
+            sleep(1)
+        }
+    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return arrTime.count;
@@ -209,16 +242,9 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath) as! CollectionViewCell
         
-//        cell.lblAlarmDescription.text
-        
         cell.lblAlarmTime.text = arrTime[indexPath.item];
         
         cell.lblAlarmDescription.text = arrDescription[indexPath.item];
-        
-        
-        
-        
-//        print (arrTime[indexPath.item]);
         
         return cell;
     }
@@ -238,6 +264,19 @@ class AlarmsViewController: UIViewController, UICollectionViewDataSource, UIColl
         sleep(1)
         
         return status
+    }
+    
+    func showAlert() {
+        let alert = UIAlertController(title: "Wakker worden", message: "It's recommended you bring your towel before continuing.", preferredStyle: .alert)
+
+        alert.addAction(UIAlertAction(title: "Stop", style: .default, handler: stopSound))
+        alert.addAction(UIAlertAction(title: "Love this alarm", style: .cancel, handler: nil))
+
+        self.present(alert, animated: true)
+    }
+    
+    func stopSound(alert: UIAlertAction!) {
+        self.playAlarm = false
     }
     
 
